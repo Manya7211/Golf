@@ -1,18 +1,16 @@
-.body_background 
-{
+.body_background {
     background-position: center;
     background-size:contain;
 	background:url(Grass.jpg);
 }
-#myCanvas
-{
+#myCanvas {
     border-width:10px;
     border-style:ridge;
 	background-color:forestgreen;
 }
 
 
-#hd3{
+#hd3 {
 	display: inline-block;
 	color: red;
 	background-color: aliceblue;

@@ -13,9 +13,9 @@ function load_img(){
 		hole_obj.scaleToHeight(50);
 		hole_obj.set({
 			top:hole_y,
-			top:hole_x
+			left:hole_x
 		});
-		canvas.Add(hole_obj);
+		canvas.add(hole_obj);
 	})
 	new_image();
 }
@@ -27,9 +27,9 @@ function new_image(){
 		ball_obj.scaleToHeight(50);
 		ball_obj.set({
 			top:ball_y,
-			top:ball_x
+			left:ball_x
 		});
-		canvas.Add(ball_obj);
+		canvas.add(ball_obj);
 	})
 }
 
@@ -38,12 +38,13 @@ window.addEventListener("keydown", my_keydown);
 function my_keydown(e) {
 	keyPressed = e.keyCode;
 	console.log(keyPressed);
-	if((ball_x==hole_x)&&(ball_y==hole_y)){
+	if((ball_x==hole_x)&&(ball_y==hole_y)) {
 		canvas.remove(ball_obj);
-	};
+		console.log("You've Hit the Goal!")
 	document.getElementById("hd3").innerHTML = "You Have Hit The Goal!";
 	document.getElementById("myCanvas").style.borderColor = "red";
-	else { 
+	}
+	else {
 		if(keyPressed == '38') {
 			up();
 			console.log("Up");
@@ -59,12 +60,13 @@ function my_keydown(e) {
 		if(keyPressed == '39') {
 			right();
 			console.log("Right");
-		}
+		}		
 	}
-	
+}
+
 function up() {
-	if(ball_y >= 0) {
-		ball_y = ball_y + block_image_height;
+	if(ball_y >= 5) {
+		ball_y = ball_y - block_image_height;
 		console.log("Block Image Height = " + block_image_height);
 		console.log("When Up Arrow Key is Pressed, X = " + ball_x + ", Y = " + ball_y);
 		canvas.remove(ball_obj);
@@ -73,7 +75,7 @@ function up() {
 }
 
 function down() {
-	if(ball_y <= 500) {
+	if(ball_y <= 450) {
 		ball_y = ball_y + block_image_height;
 		console.log("Block Image Height = " + block_image_height);
 		console.log("When Down Arrow Key is Pressed, X = " + ball_x + ", Y = " + ball_y);
@@ -84,7 +86,7 @@ function down() {
 
 function left() {
 	if(ball_x > 5) {
-		ball_x = ball_x + block_image_width;
+		ball_x = ball_x - block_image_width;
 		console.log("Block Image Height = " + block_image_width);
 		console.log("When Left Arrow Key is Pressed, X = " + ball_x + ", Y = " + ball_y);
 		canvas.remove(ball_obj);
@@ -93,13 +95,11 @@ function left() {
 }
 
 function right() {
-	if(ball_x <= 1100) {w
+	if(ball_x <= 1050) {
 		ball_x = ball_x + block_image_width;
 		console.log("Block Image Height = " + block_image_width);
 		console.log("When Right Arrow Key is Pressed, X = " + ball_x + ", Y = " + ball_y);
 		canvas.remove(ball_obj);
 		new_image();
 	}
-}
-	
 }
